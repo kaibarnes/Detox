@@ -645,6 +645,12 @@ class WaitFor {
     return this.waitForWithAction(traceDescription);
   }
 
+  performAccessibilityAction(actionName) {
+    this.action = this.actionableElement.performAccessibilityAction(actionName);
+    const traceDescription = actionDescription.performAccessibilityAction(actionName);
+    return this.waitForWithAction(traceDescription);
+  }
+
   pinch(scale, speed, angle) {
     this.action = this.actionableElement.pinch(scale, speed, angle);
     const traceDescription = actionDescription.pinch(scale, speed, angle);
@@ -693,11 +699,6 @@ class WaitFor {
       ...expectation,
       timeout
     };
-  }
-
-  performAccessibilityAction(actionName) {
-    this.action = this.actionableElement.performAccessibilityAction(actionName);
-    return this.waitForWithAction();
   }
 }
 
